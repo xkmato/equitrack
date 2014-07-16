@@ -1,5 +1,5 @@
-import hashlib
-from random import random
+import random
+import string
 from django.db import models
 
 __author__ = 'kenneth'
@@ -28,7 +28,8 @@ class FACE(models.Model):
         return self.partner.ip_name + "FACEs"
 
     def generate_number(self):
-        self.ref = unicode(u"aklsjkajfklas")
+        N = 8
+        self.ref = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))
 
     def save(self, force_insert=False, force_update=False, using=None):
         self.generate_number()

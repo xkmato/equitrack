@@ -24,5 +24,5 @@ def home(request):
         face.amount = amount
         face.partner = ip
         face.save()
-        response = json.dumps({'extras': {'faceref': face.ref}})
+        response = json.dumps({'faceref': face.ref})
     return HttpResponse(response)
