@@ -30,11 +30,16 @@ class FACE(models.Model):
         m = hashlib.md5()
         m.update(self.pk)
         self.ref = m.digest()
+        self.save()
 
     def save(self, force_insert=False, force_update=False, using=None):
-        if not  self.ref:
-            self.generate_number()
+        x = False
+        if not self.ref:
+            x = True
+            self.ref = 'p'
         if self.paid:
             pass
             #Tell API that this fellow has been paid
         super(FACE, self).save()
+        if x:
+            self.generate_number()
