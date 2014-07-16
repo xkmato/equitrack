@@ -12,6 +12,7 @@ def home(request):
     values = request.POST.get('values', {})
     print values
     for value in values:
+        print value
         if value.get('label', None) == 'PCA Number':
             pca_number = value.get('value')
         if value.get('label', None) == 'PCA Number':
