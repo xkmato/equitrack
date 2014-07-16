@@ -8,6 +8,7 @@ __author__ = 'kenneth'
 @csrf_exempt
 def home(request):
     text = request.POST.get('text', None)
+    print request.POST
     print text
     response = json.dumps({'error':'One of the values is missing'})
     if text and len(text) > 1:
