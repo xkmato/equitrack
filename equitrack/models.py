@@ -28,9 +28,7 @@ class FACE(models.Model):
         return self.partner.ip_name + "FACEs"
 
     def generate_number(self):
-        m = hashlib.md5()
-        m.update(unicode(random()))
-        self.ref = m.digest()
+        self.ref = unicode(u"aklsjkajfklas")
 
     def save(self, force_insert=False, force_update=False, using=None):
         self.generate_number()
