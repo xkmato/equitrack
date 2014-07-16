@@ -29,7 +29,7 @@ class FACE(models.Model):
 
     def generate_number(self):
         m = hashlib.md5()
-        m.update(str(random()))
+        m.update(unicode(random()))
         self.ref = m.digest()
 
     def save(self, force_insert=False, force_update=False, using=None):
