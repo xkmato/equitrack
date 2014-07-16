@@ -1,4 +1,5 @@
 import hashlib
+from random import random
 from django.db import models
 
 __author__ = 'kenneth'
@@ -28,18 +29,12 @@ class FACE(models.Model):
 
     def generate_number(self):
         m = hashlib.md5()
-        m.update(self.pk)
+        m.update(random())
         self.ref = m.digest()
-        self.save()
 
     def save(self, force_insert=False, force_update=False, using=None):
-        x = False
-        if not self.ref:
-            x = True
-            self.ref = 'p'
+        self.generate_number()
         if self.paid:
             pass
             #Tell API that this fellow has been paid
         super(FACE, self).save()
-        if x:
-            self.generate_number()
