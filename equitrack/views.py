@@ -10,12 +10,12 @@ __author__ = 'kenneth'
 def home(request):
     pca_number, amount = None, None
     values = request.POST.get('values', {})
+    print values
     for value in values:
         if value.get('label', None) == 'PCA Number':
             pca_number = value.get('value')
         if value.get('label', None) == 'PCA Number':
             amount = value.get('value')
-    print values
     response = json.dumps({'error': 'One of the values is missing'})
     if pca_number and amount:
         ip = IPartners.objects.get(PCA_number=pca_number)
