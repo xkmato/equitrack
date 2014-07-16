@@ -25,7 +25,7 @@ class FACE(models.Model):
     acknowledged = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.partner.ip_name + "FACEs"
+        return self.ref
 
     def generate_number(self):
         N = 8
