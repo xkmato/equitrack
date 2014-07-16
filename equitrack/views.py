@@ -5,5 +5,5 @@ __author__ = 'kenneth'
 
 @csrf_exempt
 def home(request):
-    print request.body
+    print request.POST
     return HttpResponse(status=201)
