@@ -28,6 +28,7 @@ def home(request):
     return HttpResponse(response)
 
 
+@csrf_exempt
 def validate(request):
     text = json.loads(request.POST.get('text'))
     print text
