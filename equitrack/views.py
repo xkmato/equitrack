@@ -13,9 +13,9 @@ def home(request):
     print values
     for value in values:
         print value
-        if value.get('label', None) == 'PCA Number':
-            pca_number = value.get('value')
-        if value.get('label', None) == 'PCA Number':
+        if value.get('label', None) == 'PCA Number' and value.get('value') == 'valid':
+            pca_number = value.get('text')
+        if value.get('label', None) == 'amount':
             amount = value.get('value')
     response = json.dumps({'error': 'One of the values is missing'})
     if pca_number and amount:
