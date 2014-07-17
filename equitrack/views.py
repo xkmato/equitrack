@@ -1,6 +1,7 @@
 import json
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+import re
 from equitrack.models import IPartners, FACE
 
 __author__ = 'kenneth'
@@ -45,11 +46,20 @@ def acknowledge(request):
     print "POST=====>", request.POST
     print values
     ack = None
+    s = request.POST.get('steps')
+    if type(s) == list:
+        face = s.split("|")[0].strip()
+    else:
+        face = s.split("|").strip()
+    face = FACE.objects.get(ref=face)
     for value in values:
         print value
         if value.get('label', None) == 'acknowledgement':
-            if value.get('value') == 'yes':
+            if value.get('value').lower() == 'yes':
                 ack = 'yes'
-            if value.get('value') == 'no':
+            if value.get('value').lower() == 'no':
                 ack = 'no'
+    if ack:
+        face.acknowledgment = ack
+        face.save()
     return HttpResponse(status=201)
