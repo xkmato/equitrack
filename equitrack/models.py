@@ -53,7 +53,8 @@ class FACE(models.Model):
         return response
 
     def save(self, force_insert=False, force_update=False, using=None):
-        self.generate_number()
+        if not self.ref:
+            self.generate_number()
         response = self.notify_payment()
         if response:
             try:
