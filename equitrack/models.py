@@ -56,6 +56,7 @@ class FACE(models.Model):
         if not self.ref:
             self.generate_number()
         response = self.notify_payment()
+        print "response===>", response
         if response:
             try:
                 if response.status_code in [200, 201]:
