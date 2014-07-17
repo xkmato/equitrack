@@ -47,10 +47,10 @@ class FACE(models.Model):
                     "amount": self.amount
                 }
             }
-            req = urllib2.Request(constants.START_FLOW_URL)
+            req = urllib2.Request(constants.START_FLOW_URL, json.dumps(obj))
             req.add_header('Authorization', constants.AUTH_TOKEN)
             req.add_header('Content-Type', 'application/json')
-            response = urllib2.urlopen(req, json.dumps(obj))
+            response = urllib2.urlopen(req)
         return response
 
     def save(self, force_insert=False, force_update=False, using=None):
