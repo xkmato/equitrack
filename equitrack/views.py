@@ -59,6 +59,7 @@ def acknowledge(request):
                 ack = 'yes'
             if value.get('value').lower() == 'no':
                 ack = 'no'
+    print ack
     if ack:
         face.acknowledgment = ack
         face.save()
