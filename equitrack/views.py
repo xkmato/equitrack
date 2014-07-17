@@ -37,3 +37,19 @@ def validate(request):
     except IPartners.DoesNotExist as e:
         response = json.dumps({'valid':'invalid', 'ipnumber':text})
     return HttpResponse(response)
+
+
+@csrf_exempt
+def acknowledge(request):
+    values = json.loads(request.POST.get('values', {}))
+    print "POST=====>", request.POST
+    print values
+    ack = None
+    for value in values:
+        print value
+        if value.get('label', None) == 'acknowledgement':
+            if value.get('value') == 'yes':
+                ack = 'yes'
+            if value.get('value') == 'no':
+                ack = 'no'
+    return HttpResponse(status=201)
