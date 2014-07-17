@@ -27,7 +27,7 @@ class FACE(models.Model):
     amount = models.CharField(max_length=100, default=0)
     paid = models.BooleanField(default=False)
     date_paid = models.DateTimeField(null=True)
-    acknowledgment = models.CharField(choices=(('yes', 'yes'), ('no', 'no')), blank=True)
+    acknowledgment = models.CharField(choices=(('yes', 'yes'), ('no', 'no')), blank=True, max_length=100)
 
     def __unicode__(self):
         return self.ref
