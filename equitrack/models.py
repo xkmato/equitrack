@@ -1,7 +1,7 @@
 import json
 import random
+import requests
 import string
-import urllib2
 from datetime import datetime
 from django.db import models
 from equitrack import constants
@@ -47,9 +47,9 @@ class FACE(models.Model):
                     "amount": self.amount
                 }
             }
-            req = urllib2.Request(constants.START_FLOW_URL, json.dumps(obj))
-            req.add_header('Authorization', constants.AUTH_TOKEN)
-            response = urllib2.urlopen(req)
+            response = requests.post(constants.START_FLOW_URL, data=json.dumps(obj),
+                                     headers={'Content-type': 'application/json',
+                                              'Authorization': constants.AUTH_TOKEN})
         return response
 
     def save(self, force_insert=False, force_update=False, using=None):
@@ -57,11 +57,11 @@ class FACE(models.Model):
         response = self.notify_payment()
         if response:
             try:
-                if response.getcode() in [200, 201]:
-                   self.date_paid = datetime.now()
+                if response.status_code in [200, 201]:
+                    self.date_paid = datetime.now()
                 else:
-                    print response.getcode()
-                    print response.read()
+                    print response.status_code
+                    print response.content
             except Exception as e:
                 print e
         super(FACE, self).save()
