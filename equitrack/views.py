@@ -26,3 +26,13 @@ def home(request):
         face.save()
         response = json.dumps({'faceref': face.ref})
     return HttpResponse(response)
+
+
+def validate(request):
+    text = json.loads(request.POST.get('text'))[0]
+    try:
+        IPartners.objects.get(PCA_number=text)
+        response = json.dumps({'valid': 'valid', 'ipnumber':text})
+    except IPartners.DoesNotExist as e:
+        response = json.dumps({'valid':'invalid', 'ipnumber':text})
+    return HttpResponse(response)

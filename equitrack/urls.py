@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^pc_number$', 'equitrack.views.home', name='home'),
+    url(r'^validate_number$', 'equitrack.views.validate', name='validate'),
     # url(r'^equitrack/', include('equitrack.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
