@@ -48,9 +48,9 @@ def acknowledge(request):
     ack = None
     s = request.POST.get('steps')
     if type(s) == list:
-        face = s.split("|")[0].strip()
+        face = s[0].split("|")[1].strip()
     else:
-        face = s.split("|").strip()
+        face = s.split("|")[1].strip()
     face = FACE.objects.get(ref=face)
     for value in values:
         print value
