@@ -26,7 +26,7 @@ class FACE(models.Model):
     submited_on = models.DateTimeField(auto_now_add=True)
     amount = models.CharField(max_length=100, default=0)
     paid = models.BooleanField(default=False)
-    date_paid = models.DateTimeField(null=True)
+    date_paid = models.DateTimeField(null=True, blank=True)
     acknowledgment = models.CharField(choices=(('yes', 'yes'), ('no', 'no')), blank=True, max_length=100)
 
     def __unicode__(self):
