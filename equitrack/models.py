@@ -49,7 +49,6 @@ class FACE(models.Model):
             }
             req = urllib2.Request(constants.START_FLOW_URL, json.dumps(obj))
             req.add_header('Authorization', constants.AUTH_TOKEN)
-            req.add_header('Content-Type', 'application/json')
             response = urllib2.urlopen(req)
         return response
 
