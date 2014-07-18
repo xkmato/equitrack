@@ -59,9 +59,11 @@ def acknowledge(request):
     ack = None
     s = request.POST.get('steps')
     if type(s) == list:
-        face = s[0].split("|")[1].strip()
+        raw = s[0].split("|")[1].strip()
+        face = raw.split('Ref#')[1].strip()
     else:
-        face = s.split("|")[1].strip()
+        raw = s.split("|")[1].strip()
+        face = raw.split('Ref#')[1].strip()
     face = FACE.objects.get(ref=face)
     for value in values:
         print value
@@ -69,8 +71,10 @@ def acknowledge(request):
         if value.get('label', None) == 'acknowledgement':
             if value.get('value').lower() == 'yes':
                 ack = 'yes'
+                break
             if value.get('value').lower() == 'no':
                 ack = 'no'
+                break
     print ack
     logger.info(ack)
     if ack:

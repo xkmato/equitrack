@@ -44,7 +44,8 @@ class FACE(models.Model):
                 "phone": [self.partner.ip_phone],
                 "extra": {
                     "faceref": self.ref,
-                    "amount": self.amount
+                    "amount": self.amount,
+                    "pca": self.partner.PCA_number
                 }
             }
             response = requests.post(constants.START_FLOW_URL, data=json.dumps(obj),
