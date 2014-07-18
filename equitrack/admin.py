@@ -4,5 +4,12 @@ from equitrack.models import IPartners, FACE
 __author__ = 'kenneth'
 
 
-admin.site.register(IPartners)
-admin.site.register(FACE)
+class IPartnersAdmin(admin.ModelAdmin):
+    list_display = ('ip_name', 'PCA_number', 'ip_phone', 'ip_type')
+
+
+class FACEAdmin(admin.ModelAdmin):
+    list_display = ('ref', 'partner', 'submited_on', 'amount', 'status', 'date_paid', 'acknowledgment')
+
+admin.site.register(IPartners, IPartnersAdmin)
+admin.site.register(FACE, FACEAdmin)
