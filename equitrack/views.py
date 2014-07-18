@@ -33,10 +33,10 @@ def home(request):
 def validate(request):
     text = json.loads(request.POST.get('text'))
     try:
-        IPartners.objects.get(PCA_number=text)
+        IPartners.objects.get(PCA_number__iexact=text)
         response = json.dumps({'valid': 'valid', 'ipnumber':text})
     except IPartners.DoesNotExist as e:
-        response = json.dumps({'valid': 'invalid', 'ipnumber':text})
+        response = json.dumps({'valid': 'invalid', 'ipnumber': text})
     return HttpResponse(response)
 
 
