@@ -10,7 +10,7 @@ __author__ = 'kenneth'
 @csrf_exempt
 def home(request):
     pca_number, amount = None, None
-    values = json.loads(request.POST.get('values', {}))
+    values = json.loads(request.POST['values'])
     print values
     for value in values:
         print value
