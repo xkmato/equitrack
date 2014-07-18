@@ -33,8 +33,7 @@ class FACE(models.Model):
         return self.ref
 
     def generate_number(self):
-        N = 8
-        self.ref = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))
+        return "UGDA000020"+str(self.pk)
 
     def notify_payment(self):
         response = None
@@ -54,6 +53,7 @@ class FACE(models.Model):
         return response
 
     def save(self, force_insert=False, force_update=False, using=None):
+        self.amount = self.amount.strip('.')[0]
         if not self.ref:
             self.generate_number()
         response = self.notify_payment()
