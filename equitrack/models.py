@@ -32,11 +32,11 @@ class FACE(models.Model):
 
     @property
     def submitedOn(self):
-        return strftime("%a, %d %b %Y", self.submited_on)
+        return self.submited_on.strftime("%a, %d %b %Y")
 
     @property
     def paid_on(self):
-        return strftime("%a, %d %b %Y", self.date_paid)
+        return self.paid_on.strftime("%a, %d %b %Y")
 
     def __unicode__(self):
         return self.ref
