@@ -34,7 +34,6 @@ def validate(request):
     print request.POST
     text = request.POST.get('text')
     print text
-    text = json.loads(text)
     try:
         IPartners.objects.get(PCA_number__iexact=text)
         response = json.dumps({'valid': 'valid', 'ipnumber':text})
