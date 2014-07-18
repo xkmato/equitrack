@@ -47,7 +47,7 @@ class IPartnersAdmin(admin.ModelAdmin):
 
 
 class FACEAdmin(admin.ModelAdmin):
-    list_display = ('ref', 'partner', submitedOn, 'amount', get_status, paid_on, get_acknowledgement)
+    list_display = ('ref', 'partner', submitedOn, get_amount, get_status, paid_on, get_acknowledgement)
 
 admin.site.register(IPartners, IPartnersAdmin)
 admin.site.register(FACE, FACEAdmin)
