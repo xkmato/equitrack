@@ -32,8 +32,9 @@ def home(request):
 @csrf_exempt
 def validate(request):
     print request.POST
-    text = request.POST.get('text')
+    text = request.POST['text']
     print text
+    print type(text)
     try:
         IPartners.objects.get(PCA_number__iexact=text)
         response = json.dumps({'valid': 'valid', 'ipnumber':text})
