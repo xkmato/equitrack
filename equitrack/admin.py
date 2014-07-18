@@ -11,6 +11,8 @@ submitedOn.short_description = 'Submited On'
 def paid_on(obj):
     if obj.date_paid:
         return obj.paid_on.strftime("%a, %d %b %Y")
+    else:
+        return ""
 
 paid_on.short_description = 'Pain On'
 
