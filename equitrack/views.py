@@ -80,6 +80,7 @@ def acknowledge(request):
     return HttpResponse(status=201)
 
 
+@csrf_exempt
 def validate_face(request):
     text = request.POST.get('text')
     print text
