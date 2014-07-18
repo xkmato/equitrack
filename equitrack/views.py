@@ -36,7 +36,7 @@ def validate(request):
         IPartners.objects.get(PCA_number=text)
         response = json.dumps({'valid': 'valid', 'ipnumber':text})
     except IPartners.DoesNotExist as e:
-        response = json.dumps({'valid':'invalid', 'ipnumber':text})
+        response = json.dumps({'valid': 'invalid', 'ipnumber':text})
     return HttpResponse(response)
 
 
