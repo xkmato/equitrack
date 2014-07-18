@@ -38,7 +38,7 @@ class FACE(models.Model):
 
     def notify_payment(self):
         response = None
-        if self.paid and not self.date_paid:
+        if self.status == 'paid' and not self.date_paid:
             obj = {
                 "flow": constants.FLOW_NUMBER,
                 "phone": [self.partner.ip_phone],
