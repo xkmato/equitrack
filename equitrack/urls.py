@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^pc_number$', 'equitrack.views.home', name='home'),
     url(r'^validate_number$', 'equitrack.views.validate', name='validate'),
+    url(r'^validate_face$', 'equitrack.views.validate_face', name='validate_face'),
     url(r'^acknowledge', 'equitrack.views.acknowledge', name='acknowledge'),
     # url(r'^equitrack/', include('equitrack.foo.urls')),
 

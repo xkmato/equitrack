@@ -57,27 +57,37 @@ def acknowledge(request):
     print values
     logger.info(values)
     ack = None
-    s = request.POST.get('steps')
-    if type(s) == list:
-        raw = s[0].split("|")[1].strip()
-        face = raw.split('Ref#')[1].strip()
-    else:
-        raw = s.split("|")[1].strip()
-        face = raw.split('Ref#')[1].strip()
-    face = FACE.objects.get(ref=face)
+    face = None
     for value in values:
         print value
         logger.info(value)
+        if value.get('label', None) == 'reference' and value.get('value') == 'valid':
+            ref = value.get('text')
+            face = FACE.objects.get(ref=ref)
+            continue
         if value.get('label', None) == 'acknowledgement':
             if value.get('value').lower() == 'yes':
                 ack = 'yes'
-                break
+                continue
             if value.get('value').lower() == 'no':
                 ack = 'no'
-                break
+                continue
     print ack
     logger.info(ack)
-    if ack:
+    if ack and face:
         face.acknowledgment = ack
         face.save()
     return HttpResponse(status=201)
+
+
+def validate_face(request):
+    text = request.POST['text']
+    print text
+    print type(text)
+    try:
+        f = FACE.objects.get(ref__iexact=text)
+        response = json.dumps({'valid': 'valid', 'ref': f.ref, 'ip_name': f.partner.ip_name})
+    except IPartners.DoesNotExist as e:
+        print e
+        response = json.dumps({'valid': 'invalid', 'ref': text})
+    return HttpResponse(response)
