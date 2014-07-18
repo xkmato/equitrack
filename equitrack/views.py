@@ -12,6 +12,7 @@ def home(request):
     pca_number, amount = None, None
     values = json.loads(request.POST['values'])
     print values
+    print type(values)
     for value in values:
         print value
         if value.get('label', None) == 'PCA Number' and value.get('value') == 'valid':
