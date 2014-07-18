@@ -31,6 +31,7 @@ def home(request):
 
 @csrf_exempt
 def validate(request):
+    print request.POST
     text = request.POST.get('text')
     print text
     text = json.loads(text)
