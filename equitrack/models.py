@@ -36,7 +36,10 @@ class FACE(models.Model):
 
     @property
     def paid_on(self):
-        return self.paid_on.strftime("%a, %d %b %Y")
+        if self.date_paid:
+            return self.paid_on.strftime("%a, %d %b %Y")
+        else:
+            return ""
 
     def __unicode__(self):
         return self.ref
