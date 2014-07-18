@@ -25,7 +25,7 @@ class FACE(models.Model):
     partner = models.ForeignKey(IPartners, related_name='face_refs')
     submited_on = models.DateTimeField(auto_now_add=True)
     amount = models.CharField(max_length=100, default=0)
-    status = models.CharField(blank=True, choices=(('paid', 'paid'), ('cancelled', 'cancelled')))
+    status = models.CharField(blank=True, choices=(('paid', 'paid'), ('cancelled', 'cancelled')), max_length=100)
     date_paid = models.DateTimeField(null=True, blank=True)
     acknowledgment = models.CharField(choices=(('yes', 'yes'), ('no', 'no')), blank=True, max_length=100)
 
