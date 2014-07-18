@@ -47,7 +47,7 @@ def validate(request):
 @csrf_exempt
 def acknowledge(request):
     values = json.loads(request.POST.get('values', {}))
-    print "POST=====>", request.POST
+    print "POST====>", request.POST
     print values
     ack = None
     s = request.POST.get('steps')
