@@ -30,14 +30,7 @@ class FACE(models.Model):
     date_paid = models.DateTimeField(verbose_name='Paid On', null=True, blank=True)
     acknowledgment = models.CharField(choices=(('yes', 'yes'), ('no', 'no')), blank=True, max_length=100)
 
-    @property
-    def submitedOn(self):
-        return self.submited_on.strftime("%a, %d %b %Y")
 
-    @property
-    def paid_on(self):
-        if self.date_paid:
-            return self.paid_on.strftime("%a, %d %b %Y")
         else:
             return ""
 
