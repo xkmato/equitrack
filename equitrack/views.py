@@ -21,7 +21,7 @@ def home(request):
             amount = value.get('value')
     response = json.dumps({'error': 'One of the values is missing'})
     if pca_number and amount:
-        ip = IPartners.objects.get(PCA_number=pca_number)
+        ip = IPartners.objects.get(PCA_number__iexact=pca_number)
         face = FACE.objects.create(partner=ip)
         face.amount = amount
         face.partner = ip
