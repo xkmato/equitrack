@@ -53,7 +53,7 @@ class FACE(models.Model):
         return response
 
     def save(self, force_insert=False, force_update=False, using=None):
-        self.amount = self.amount.strip('.')[0]
+        self.amount = self.amount.split('.')[0]
         if not self.ref:
             self.generate_number()
         response = self.notify_payment()
