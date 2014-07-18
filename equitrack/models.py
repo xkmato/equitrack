@@ -3,6 +3,7 @@ import random
 import requests
 import string
 from datetime import datetime
+from time import strftime
 from django.db import models
 from equitrack import constants
 
@@ -26,8 +27,16 @@ class FACE(models.Model):
     submited_on = models.DateTimeField(auto_now_add=True)
     amount = models.CharField(max_length=100, default=0)
     status = models.CharField(blank=True, choices=(('paid', 'paid'), ('cancelled', 'cancelled')), max_length=100)
-    date_paid = models.DateTimeField(null=True, blank=True)
+    date_paid = models.DateTimeField(verbose_name='Paid On', null=True, blank=True)
     acknowledgment = models.CharField(choices=(('yes', 'yes'), ('no', 'no')), blank=True, max_length=100)
+
+    @property
+    def submitedOn(self):
+        return strftime("%a, %d %b %Y", self.submited_on)
+
+    @property
+    def paid_on(self):
+        return strftime("%a, %d %b %Y", self.date_paid)
 
     def __unicode__(self):
         return self.ref
