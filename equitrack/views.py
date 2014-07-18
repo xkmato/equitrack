@@ -1,9 +1,10 @@
 import json
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-import re
 from equitrack.models import IPartners, FACE
+import logging
 
+logger = logging.getLogger(__name__)
 __author__ = 'kenneth'
 
 
@@ -12,9 +13,12 @@ def home(request):
     pca_number, amount = None, None
     values = json.loads(request.POST['values'])
     print values
+    logger.info(values)
     print type(values)
+    logger.info(type(values))
     for value in values:
         print value
+        logger.info(value)
         if value.get('label', None) == 'PCA Number' and value.get('value') == 'valid':
             pca_number = value.get('text')
         if value.get('label', None) == 'amount':
@@ -48,7 +52,9 @@ def validate(request):
 def acknowledge(request):
     values = json.loads(request.POST.get('values', {}))
     print "POST====>", request.POST
+    logger.info(request.POST)
     print values
+    logger.info(values)
     ack = None
     s = request.POST.get('steps')
     if type(s) == list:
@@ -58,12 +64,14 @@ def acknowledge(request):
     face = FACE.objects.get(ref=face)
     for value in values:
         print value
+        logger.info(value)
         if value.get('label', None) == 'acknowledgement':
             if value.get('value').lower() == 'yes':
                 ack = 'yes'
             if value.get('value').lower() == 'no':
                 ack = 'no'
     print ack
+    logger.info(ack)
     if ack:
         face.acknowledgment = ack
         face.save()
