@@ -15,6 +15,13 @@ def paid_on(obj):
         return ""
 
 
+def get_amount(obj):
+    try:
+        return "{:,}".format(int(obj.amount))
+    except:
+        return obj.amount
+
+
 def get_status(obj):
     if obj.status:
         return obj.status
@@ -31,7 +38,9 @@ get_status.short_description = 'Status'
 
 paid_on.short_description = 'Pain On'
 
-get_acknowledgement.short_description = 'Short Description'
+get_acknowledgement.short_description = 'Acknowledgement'
+
+get_amount.short_description = 'Amount'
 
 class IPartnersAdmin(admin.ModelAdmin):
     list_display = ('ip_name', 'PCA_number', 'ip_phone', 'ip_type')
