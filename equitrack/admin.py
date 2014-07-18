@@ -10,7 +10,7 @@ submitedOn.short_description = 'Submited On'
 
 def paid_on(obj):
     if obj.date_paid:
-        return obj.paid_on.strftime("%a, %d %b %Y")
+        return obj.date_paid.strftime("%a, %d %b %Y")
     else:
         return ""
 
