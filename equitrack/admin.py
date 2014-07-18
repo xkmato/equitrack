@@ -14,15 +14,31 @@ def paid_on(obj):
     else:
         return ""
 
+
+def get_status(obj):
+    if obj.status:
+        return obj.status
+    else:
+        return "In Process"
+
+def get_acknowledgement(obj):
+    if obj.acknowledgment:
+        return obj.acknowledgment
+    else:
+        return ""
+
+get_status.short_description = 'Status'
+
 paid_on.short_description = 'Pain On'
 
+get_acknowledgement.short_description = 'Short Description'
 
 class IPartnersAdmin(admin.ModelAdmin):
     list_display = ('ip_name', 'PCA_number', 'ip_phone', 'ip_type')
 
 
 class FACEAdmin(admin.ModelAdmin):
-    list_display = ('ref', 'partner', submitedOn, 'amount', 'status', paid_on, 'acknowledgment')
+    list_display = ('ref', 'partner', submitedOn, 'amount', get_status, paid_on, get_acknowledgement)
 
 admin.site.register(IPartners, IPartnersAdmin)
 admin.site.register(FACE, FACEAdmin)
