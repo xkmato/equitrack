@@ -81,7 +81,7 @@ def acknowledge(request):
 
 
 def validate_face(request):
-    text = request.POST['text']
+    text = request.POST.get('text')
     print text
     print type(text)
     try:
