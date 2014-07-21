@@ -126,4 +126,4 @@ def add_dct(request):
         _DCT.status = DCT
         _DCT.save()
         return HttpResponse(status=200)
-    return HttpResponse("%s-face, %s-DCT"%(str(f), str(DCT)))
+    return HttpResponse("%s-face, %s-DCT %s"%(str(f), str(DCT), json.dumps(values)))
