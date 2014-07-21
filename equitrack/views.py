@@ -119,7 +119,7 @@ def add_dct(request):
         if value.get('label', None) == 'status' and value.get('value').lower() == 'no':
             DCT = 'overdue'
             continue
-        if value.get('label', None) == 'face_ref' and value.get('value').lower() == 'valid':
+        if value.get('label', None) == 'Face Ref' and value.get('value').lower() == 'valid':
             f = FACE.objects.get(ref__iexact=value.get('text'))
     if DCT and f:
         _DCT = DCTReport.objects.get_or_create(face=f)[0]
