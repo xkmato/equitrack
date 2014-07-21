@@ -106,3 +106,23 @@ def dashboard(request):
     d_ovr = DCTReport.objects.filter(status='overdue')
     d_proc = DCTReport.objects.filter(status=None)
     return render_to_response('index.html', locals(), context_instance=RequestContext(request))
+
+@csrf_exempt
+def add_dct(request):
+    values = json.loads(request.POST.get('values', {}))
+    DCT = None
+    f = None
+    for value in values:
+        if value.get('label', None) == 'status' and value.get('value').lower() == 'yes':
+            DCT = 'implemented'
+            continue
+        if value.get('label', None) == 'status' and value.get('value').lower() == 'no':
+            DCT = 'overdue'
+            continue
+        if value.get('label', None) == 'face_ref' and value.get('value').lower() == 'valid':
+            f = FACE.objects.get(ref__iexact=value.get('text'))
+    if DCT and f:
+        _DCT = DCTReport.objects.get_or_create(face=f)[0]
+        _DCT.status = DCT
+        _DCT.save()
+    return HttpResponse(status=201)

@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^validate_number$', 'equitrack.views.validate', name='validate'),
     url(r'^validate_face$', 'equitrack.views.validate_face', name='validate_face'),
     url(r'^acknowledge', 'equitrack.views.acknowledge', name='acknowledge'),
+    url(r'^add_dct', 'equitrack.views.add_dct', name='add_dct'),
     url(r'^$', 'equitrack.views.dashboard', name='dashboard'),
     # url(r'^equitrack/', include('equitrack.foo.urls')),
 
