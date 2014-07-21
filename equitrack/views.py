@@ -65,7 +65,7 @@ def acknowledge(request):
         logger.info(value)
         if value.get('label', None) == 'reference' and value.get('value') == 'valid':
             ref = value.get('text')
-            face = FACE.objects.get(ref=ref)
+            face = FACE.objects.get(ref__iexact=ref)
             continue
         if value.get('label', None) == 'acknowledgement':
             if value.get('value').lower() == 'yes':
