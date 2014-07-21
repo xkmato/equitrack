@@ -34,7 +34,7 @@ class FACE(models.Model):
         return self.ref
 
     def generate_number(self):
-        return "UGDA000020"+str(self.pk)
+        return "UGDA000020" + str(self.pk)
 
     def notify_payment(self):
         response = None
@@ -69,3 +69,9 @@ class FACE(models.Model):
             except Exception as e:
                 print e
         super(FACE, self).save()
+
+
+class DCTReport(models.Model):
+    face = models.OneToOneField(FACE, related_name='DCT')
+    status = models.CharField(max_length=100, choices=(('implemented', 'implemented'), ('overdue', 'overdue')),
+                              blank=True)

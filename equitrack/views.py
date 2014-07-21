@@ -1,7 +1,9 @@
 import json
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
-from equitrack.models import IPartners, FACE
+from equitrack.models import IPartners, FACE, DCTReport
 import logging
 
 logger = logging.getLogger(__name__)
@@ -92,3 +94,15 @@ def validate_face(request):
         print e
         response = json.dumps({'valid': 'invalid', 'ref': text})
     return HttpResponse(response)
+
+
+def dashboard(request):
+    f_paid = FACE.objects.filter(status='paid')
+    f_reg = FACE.objects.all()
+    f_proc = FACE.objects.filter(status=None)
+    f_ret = FACE.objects.filter(status='returned')
+    d_ack = DCTReport.objects.filter(face__acknowledgment='yes')
+    d_imp = DCTReport.objects.filter(status='implemented')
+    d_ovr = DCTReport.objects.filter(status='overdue')
+    d_proc = DCTReport.objects.filter(status=None)
+    return render_to_response('index.html', locals(), context_instance=RequestContext(request))

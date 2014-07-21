@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Title here -->
+    <title>Equitrack Demo Dashboard</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your,Keywords">
+    <meta name="author" content="ResponsiveWebInc">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery gritter -->
+    <link href="{{ STATIC_URL }}css/jquery.gritter.css" rel="stylesheet">
+    <!-- Font awesome CSS -->
+    <link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Color CSS -->
+    <link href="{{ STATIC_URL }}css/less-style.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+
+<div class="outer">
+
+<!-- Sidebar starts -->
+<div class="sidebar">
+
+    <div class="sidey">
+
+        <!-- Logo -->
+        <div class="logo">
+            <h1><a href="#"><i class="fa fa-desktop br-red"></i> Equitrack <span>Dashboard</span></a></h1>
+        </div>
+
+        <!-- Sidebar navigation starts -->
+
+        <!-- Responsive dropdown -->
+        <div class="sidebar-dropdown"><a href="#" class="br-red"><i class="fa fa-bars"></i></a></div>
+
+        <div class="side-nav">
+
+            <div class="side-nav-block">
+                <!-- Sidebar heading -->
+                <h4>Main</h4>
+                <!-- Sidebar links -->
+                <ul class="list-unstyled">
+                    <li><a href="#" class="active"><i class="fa fa-desktop"></i> Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="side-nav-block">
+                <h4>Menu</h4>
+                <ul class="list-unstyled">
+                    <li><a href="/admin"><i class="fa fa-desktop"></i> Admin</a></li>
+
+                </ul>
+            </div>
+
+
+        </div>
+
+        <!-- Sidebar navigation ends -->
+
+    </div>
+</div>
+<!-- Sidebar ends -->
+
+<!-- Mainbar starts -->
+<div class="mainbar">
+
+    <!-- Mainbar head starts -->
+    <div class="main-head">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <!-- Page title -->
+                    <h2><i class="fa fa-desktop lblue"></i> Dashboard</h2>
+                </div>
+
+                <div class="col-md-3 col-sm-4 col-xs-6">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Mainbar head ends -->
+
+    <div class="main-content">
+        <div class="container">
+
+            <div class="knobs text-center">
+                <div class="row">
+                        <div class="current-status">
+                            <div class="row">
+                                <h1>FACE Request status</h1>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Icon
+                                        <i class="fa fa-user lblue"></i> -->
+                                        <!-- Heading -->
+                                        <h6>Registered</h6>
+                                        <h3>{{ f_reg.count }} <span class="fa fa-arrow-circle-down green"></span></h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Icon
+                                        <i class="fa fa-bar-chart-o lblue"></i> -->
+                                        <!-- Heading -->
+                                        <h6>Paid</h6>
+                                        <h3>{{ f_paid.count }} <span class="fa fa-arrow-circle-o-left lblue"></span></h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-12">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Heading -->
+                                        <h6>In Process</h6>
+                                        <h3>{{ f_proc.count }} <span class="fa fa-arrow-circle-up"></span></h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-12">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Heading -->
+                                        <h6>Returned</h6>
+                                        <h3>{{ f_ret.count }} <span class="fa fa-arrow-circle-up red"></span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="current-status">
+                            <div class="row">
+                                <h1>DCT Reporting</h1>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Icon
+                                        <i class="fa fa-user lblue"></i> -->
+                                        <!-- Heading -->
+                                        <h6>Acknowledged</h6>
+                                        <h3>{{ d_ack.count }} <span class="fa fa-arrow-circle-down green"></span></h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Icon
+                                        <i class="fa fa-bar-chart-o lblue"></i> -->
+                                        <!-- Heading -->
+                                        <h6>Implemented</h6>
+                                        <h3>{{ d_imp.count }} <span class="fa fa-arrow-circle-o-left lblue"></span></h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-12">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Heading -->
+                                        <h6>In Process</h6>
+                                        <h3>{{ d_proc.count }} <span class="fa fa-arrow-circle-up"></span></h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-12">
+                                    <!-- Current status item -->
+                                    <div class="current-status-item">
+                                        <!-- Heading -->
+                                        <h6>Overdue</h6>
+                                        <h3>{{ d_ovr.count }} <span class="fa fa-arrow-circle-up overdue red"></span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Mainbar ends -->
+
+<div class="clearfix"></div>
+</div>
+
+<!-- Javascript files -->
+<!-- jQuery -->
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<!-- Bootstrap JS -->
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+<!-- jQuery UI -->
+<script src="{{ STATIC_URL }}js/jquery-ui.min.js"></script>
+<!-- Custom JS -->
+<script src="{{ STATIC_URL }}js/custom.js"></script>
+
+</body>
+</html>

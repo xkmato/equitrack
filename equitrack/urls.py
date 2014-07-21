@@ -10,11 +10,12 @@ urlpatterns = patterns('',
     url(r'^validate_number$', 'equitrack.views.validate', name='validate'),
     url(r'^validate_face$', 'equitrack.views.validate_face', name='validate_face'),
     url(r'^acknowledge', 'equitrack.views.acknowledge', name='acknowledge'),
+    url(r'^$', 'equitrack.views.dashboard', name='dashboard'),
     # url(r'^equitrack/', include('equitrack.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^', include(admin.site.urls)),
+    url(r'^admin', include(admin.site.urls)),
 )
