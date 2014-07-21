@@ -125,4 +125,5 @@ def add_dct(request):
         _DCT = DCTReport.objects.get_or_create(face=f)[0]
         _DCT.status = DCT
         _DCT.save()
-    return HttpResponse(status=201)
+        return HttpResponse(status=200)
+    return HttpResponse("%s-face, %s-DCT"%(str(f), str(DCT)))
