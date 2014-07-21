@@ -1,5 +1,5 @@
 from django.contrib import admin
-from equitrack.models import IPartners, FACE
+from equitrack.models import IPartners, FACE, DCTReport
 
 __author__ = 'kenneth'
 
@@ -77,9 +77,10 @@ class FACEAdmin(admin.ModelAdmin):
     list_display = ('ref', 'partner', submitedOn, get_amount, get_status, paid_on, get_acknowledgement)
 
 
-class DCTReport(admin.ModelAdmin):
+class DCTReportAdmin(admin.ModelAdmin):
     list_display = (get_face, get_dct_ack, get_dct_status)
 
 
 admin.site.register(IPartners, IPartnersAdmin)
+admin.site.register(DCTReport, DCTReportAdmin)
 admin.site.register(FACE, FACEAdmin)
