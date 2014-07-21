@@ -55,6 +55,7 @@ class FACE(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None):
         self.amount = str(self.amount).split('.')[0]
+        super(FACE, self).save()
         if not self.ref:
             self.ref = self.generate_number()
         response = self.notify_payment()
