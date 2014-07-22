@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group, User
+from django.contrib.sites.models import Site
 from equitrack.models import IPartners, FACE, DCTReport
 
 __author__ = 'kenneth'
@@ -84,3 +86,6 @@ class DCTReportAdmin(admin.ModelAdmin):
 admin.site.register(IPartners, IPartnersAdmin)
 admin.site.register(DCTReport, DCTReportAdmin)
 admin.site.register(FACE, FACEAdmin)
+admin.site.unregister(User)
+admin.site.unregister(Group)
+admin.site.unregister(Site)

@@ -17,6 +17,10 @@ class IPartners(models.Model):
     PCA_number = models.CharField(max_length=100)
     ip_phone = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = 'Implementing Partner'
+        verbose_name_plural = 'Implementing Partners'
+
     def __unicode__(self):
         return self.ip_name
 
@@ -53,6 +57,10 @@ class FACE(models.Model):
                                               'Authorization': constants.AUTH_TOKEN})
         return response
 
+    class Meta:
+        verbose_name = "FACE"
+        verbose_name_plural = "FACEs"
+
     def save(self, force_insert=False, force_update=False, using=None):
         self.amount = str(self.amount).split('.')[0]
         super(FACE, self).save()
@@ -76,3 +84,7 @@ class DCTReport(models.Model):
     face = models.OneToOneField(FACE, related_name='DCT')
     status = models.CharField(max_length=100, choices=(('implemented', 'implemented'), ('overdue', 'overdue')),
                               blank=True)
+
+    class Meta:
+        verbose_name = "DCT Report"
+        verbose_name_plural = "DCT Reports"
