@@ -90,7 +90,7 @@ def validate_face(request):
     try:
         f = FACE.objects.get(ref__iexact=text)
         response = json.dumps({'valid': 'valid', 'ref': f.ref, 'ip_name': f.partner.ip_name})
-    except IPartners.DoesNotExist as e:
+    except FACE.DoesNotExist as e:
         print e
         response = json.dumps({'valid': 'invalid', 'ref': text})
     return HttpResponse(response)
