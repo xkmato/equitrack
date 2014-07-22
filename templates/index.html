@@ -2,7 +2,7 @@
 <html>
 <head>
     <!-- Title here -->
-    <title>DCT Demo Dashboard</title>
+    <title>DCT Monitoring Dashboard</title>
     <!-- Description, Keywords and Author -->
     <meta name="description" content="Your description">
     <meta name="keywords" content="Your,Keywords">
@@ -37,7 +37,7 @@
 
         <!-- Logo -->
         <div class="logo">
-            <h1><a href="#"><i class="fa fa-desktop br-red"></i> DCT <br/><span>Dashboard</span></a></h1>
+            <h1><a href="#"><i class="fa fa-desktop br-red"></i> DCT <br/><span>Monitoring</span></a></h1>
         </div>
 
         <!-- Sidebar navigation starts -->
@@ -82,7 +82,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-6">
                     <!-- Page title -->
-                    <h2><i class="fa fa-desktop lblue"></i> Dashboard</h2>
+                    <h2><i class="fa fa-desktop lblue"></i> DCT Monitoring</h2>
                 </div>
 
                 <div class="col-md-3 col-sm-4 col-xs-6">
@@ -102,10 +102,10 @@
                 <div class="row">
                         <div class="current-status">
                             <div class="row">
-                                <h1>FACE Request status</h1>
+                                <h1 style="font-weight: bold">FACE Request status</h1>
                                 <div class="col-md-3 col-sm-4 col-xs-6">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item green">
                                         <!-- Icon
                                         <i class="fa fa-user lblue"></i> -->
                                         <!-- Heading -->
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="col-md-3 col-sm-4 col-xs-6">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item blue">
                                         <!-- Icon
                                         <i class="fa fa-bar-chart-o lblue"></i> -->
                                         <!-- Heading -->
@@ -125,15 +125,15 @@
                                 </div>
                                 <div class="col-md-3 col-sm-4 col-xs-12">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item" style="background-color: #ffffff">
                                         <!-- Heading -->
-                                        <h6>In Process</h6>
-                                        <h3>{{ f_proc.count }} <span class="fa fa-arrow-circle-up"></span></h3>
+                                        <h6 style="color: #000000;">In Process</h6>
+                                        <h3 style="color: #000000;">{{ f_proc.count }} <span class="fa fa-arrow-circle-up"></span></h3>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-4 col-xs-12">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item red">
                                         <!-- Heading -->
                                         <h6>Returned</h6>
                                         <h3>{{ f_ret.count }} <span class="fa fa-arrow-circle-up red"></span></h3>
@@ -144,13 +144,14 @@
 
                     </div>
                 </div>
+            <br/><br/><br/>
                 <div class="row">
                         <div class="current-status">
                             <div class="row">
-                                <h1>DCT Reporting</h1>
+                                <h1 style="font-weight: bold">DCT Reporting</h1>
                                 <div class="col-md-3 col-sm-4 col-xs-6">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item green">
                                         <!-- Icon
                                         <i class="fa fa-user lblue"></i> -->
                                         <!-- Heading -->
@@ -160,7 +161,7 @@
                                 </div>
                                 <div class="col-md-3 col-sm-4 col-xs-6">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item blue">
                                         <!-- Icon
                                         <i class="fa fa-bar-chart-o lblue"></i> -->
                                         <!-- Heading -->
@@ -170,15 +171,15 @@
                                 </div>
                                 <div class="col-md-3 col-sm-4 col-xs-12">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item" style="background-color: #ffffff">
                                         <!-- Heading -->
-                                        <h6>In Process</h6>
-                                        <h3>{{ d_proc.count }} <span class="fa fa-arrow-circle-up"></span></h3>
+                                        <h6 style="color: #000000;">In Process</h6>
+                                        <h3 style="color: #000000;">{{ d_proc.count }} <span class="fa fa-arrow-circle-up"></span></h3>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-4 col-xs-12">
                                     <!-- Current status item -->
-                                    <div class="current-status-item">
+                                    <div class="current-status-item red">
                                         <!-- Heading -->
                                         <h6>Overdue</h6>
                                         <h3>{{ d_ovr.count }} <span class="fa fa-arrow-circle-up overdue red"></span></h3>

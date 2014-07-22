@@ -917,23 +917,39 @@ form label{
 	padding:10px 10px;
 	border-radius:3px;
 	text-align:left !important;
-	background:#fff;
+	background:red;
 	border: 1px solid #d5d5d5;
-	max-width:130px;
+	max-width:170px;
 }
 
 .current-status h3{
-	font-size:15px;
+	font-size:25px;
 	font-weight:bold;
-	color:#888;
+	color:#ffffff;
 }
 
 .current-status h6{
 	margin:0px;
-	font-size:11px;
-	color:#999;
+	font-size:20px;
+	color: white;
 	text-transform:uppercase;
 	margin-bottom:8px;
+}
+
+.current-status .blue{
+   background:blue;
+}
+
+.current-status .red{
+   background:red;
+}
+
+.current-status .green{
+   background:green;
+}
+
+.current-status .yellow{
+   background:yellow;
 }
 
 /* Page content */
