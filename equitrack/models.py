@@ -4,6 +4,7 @@ import requests
 import string
 from datetime import datetime
 from time import strftime
+import token
 from django.db import models
 from equitrack import constants
 
@@ -54,7 +55,7 @@ class FACE(models.Model):
             }
             response = requests.post(constants.START_FLOW_URL, data=json.dumps(obj),
                                      headers={'Content-type': 'application/json',
-                                              'Authorization': constants.AUTH_TOKEN})
+                                              'Authorization': token.AUTH_TOKEN})
         return response
 
     class Meta:
