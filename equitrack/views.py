@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
+import requests
+from equitrack import token
 from equitrack.models import IPartners, FACE, DCTReport
 import logging
 
@@ -93,6 +95,29 @@ def validate_face(request):
     except FACE.DoesNotExist as e:
         print e
         response = json.dumps({'valid': 'invalid', 'ref': text})
+    return HttpResponse(response)
+
+
+# def notify_payment(self):
+#         response = None
+#         if self.status == 'paid' and not self.date_paid:
+#             obj = {
+#                 "flow": constants.A_FLOW_NUMBER,
+#                 "phone": [self.partner.ip_phone],
+#                 "extra": {
+#                     "faceref": self.ref,
+#                     "amount": self.amount,
+#                     "pca": self.partner.PCA_number
+#                 }
+#             }
+#             response = requests.post(constants.A_START_FLOW_URL, data=json.dumps(obj),
+#                                      headers={'Content-type': 'application/json',
+#                                               'Authorization': token.AUTH_TOKEN})
+#         return response
+
+
+def get_balance(request):
+    response = json.dumps({'balance': 85})
     return HttpResponse(response)
 
 

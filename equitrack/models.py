@@ -89,3 +89,13 @@ class DCTReport(models.Model):
     class Meta:
         verbose_name = "DCT Report"
         verbose_name_plural = "DCT Reports"
+
+
+class Hospital(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.ForeignKey('Location')
+    phone = models.CharField(max_length=100)
+
+
+class Location(models.Model):
+    name = models.CharField(max_length=100)
